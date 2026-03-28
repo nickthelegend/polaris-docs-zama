@@ -1,0 +1,23 @@
+---
+title: Installation
+description: Setting up the Polaris SDK.
+---
+
+## SDK Installation
+
+Install the Polaris Pay SDK via npm:
+
+```bash
+npm install @polaris-pay/sdk
+```
+
+## Setup
+
+```javascript
+import { PolarisClient } from "@polaris-pay/sdk";
+
+const client = new PolarisClient({
+  network: "mainnet",
+  apiKey: "YOUR_API_KEY"
+});
+```
