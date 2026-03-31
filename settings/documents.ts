@@ -14,8 +14,16 @@ export const Documents: Paths[] = [
     href: "/protocol",
     items: [
       {
+        title: "Smart Contracts",
+        href: "/smart-contracts",
+      },
+      {
         title: "FHEVM Privacy",
         href: "/fhevm",
+      },
+      {
+        title: "AMM Pools & Yield",
+        href: "/amm-pools",
       },
     ],
   },

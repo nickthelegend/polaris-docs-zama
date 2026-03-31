@@ -3,38 +3,27 @@ title: Protocol Overview
 description: The core smart contracts and privacy-preserving primitives of Polaris Pay.
 ---
 
-## Smart Contracts
+## Overview
 
-The Polaris Pay protocol consists of a set of modular smart contracts for lending, swapping, and privacy.
+Polaris Pay is a decentralized yield-serviced credit protocol that utilizes Fully Homomorphic Encryption (FHE) to provide confidential lending and capital-efficient borrowing.
 
-### Core Contracts
+The protocol architecture is divided into three main layers:
+1.  **Yield Layer**: Auto-generating interest from idle collateral.
+2.  **Credit Layer**: Providing instant liquidity based on productivity.
+3.  **Privacy Layer**: Shielding user positions and health ratios using FHEVM.
 
-- **PoolManager.sol**: The central entry point for managing all asset pools.
-- **LoanEngine.sol**: Logic for originating and managing debt positions.
-- **ScoreManager.sol**: Calculates and stores user credit scores for lending.
-- **MerchantRouter.sol**: Facilitates payments between shoppers and merchants.
-- **CreditOracle.sol**: Feeds external price data and credit information to the protocol.
+---
 
-### Lending Pools
+### Smart Contracts
 
-A set of decentralized lending pools for various assets:
-- `LendingPoolUSDC.sol`: Support for stablecoin USDC.
-- `LendingPoolUSDT.sol`: Support for stablecoin USDT.
-- `LendingPoolWETH.sol`: Support for Wrapped Ether.
-- `LendingPoolBNB.sol`: Support for Binance Coin.
+For the complete list of deployed smart contracts, addresses, and Etherscan links, please visit the official registry:
 
-### AMM Pools
+👉 **[Go to Smart Contract Registry](/docs/protocol/smart-contracts)**
 
-Provides liquidity for swapping assets:
-- `AMMPoolWETH_USDC.sol`
-- `AMMPoolWETH_USDT.sol`
-- `AMMPoolBNB_USDC.sol`
-- `AMMPoolBNB_USDT.sol`
+---
 
-### Privacy Primitives (FHEVM)
+### Core Primitives
 
-Encrypted lending and borrowing based on Zama's Fully Homomorphic Encryption:
-- **PrivateCollateralVault.sol**: Encrypted collateral management.
-- **PrivateBorrowManager.sol**: Encrypted debt tracking.
-- **PrivateLendingPool.sol**: Private liquidity supply.
-- **PrivateLiquidationEngine.sol**: Privacy-preserving liquidations.
+- **Confidential collateral vault**: Stores assets in a shielded state.
+- **Yield-optimized lending pools**: Routes capital to high-performance strategies.
+- **Governance & Fees**: Manages protocol parameters and incentives.

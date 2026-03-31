@@ -1,4 +1,4 @@
-export const url = "https://docs.polaris.network"
+export const url = "https://docs.polarispay.app"
 export const siteicon = "/logo.png"
 
 export const gtm = "GTM-XXXXXXX"
@@ -20,7 +20,7 @@ export const imagealt = "Polaris Pay Documentation"
 export const twitterhandle = "@PolarisPay"
 
 export const companyname = "Polaris Pay"
-export const companylink = "https://polaris.network"
+export const companylink = "https://polarispay.app"
 
 export const branding = true
 export const rightsidebar = true

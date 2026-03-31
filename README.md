@@ -4,7 +4,7 @@ Official technical documentation for the Polaris Pay ecosystem.
 
 - **Status:** Active
 - **Framework:** Next.js + MDX
-- **Website:** [docs.polaris.network](https://docs.polaris.network)
+- **Website:** [docs.polarispay.app](https://docs.polarispay.app)
 
 ## 🚀 Overview
 
