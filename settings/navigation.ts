@@ -6,12 +6,12 @@ export const Navigations = [
     href: `/docs${PageRoutes[0].href}`,
   },
   {
-    title: "Algorand JNTU",
-    href: "https://docs.algocraft.fun",
+    title: "Polaris Network",
+    href: "https://polarispay.app",
     external: true,
   },
 ]
 
 export const GitHubLink = {
-  href: "https://github.com/algorand-devrel",
+  href: "https://github.com/PolarisPay",
 }

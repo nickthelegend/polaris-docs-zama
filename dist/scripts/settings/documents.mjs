@@ -1,19 +1,62 @@
 export const Documents = [
     {
         title: "Introduction",
-        href: "/",
+        href: "",
+    },
+    {
+        title: "Protocol Architecture",
+        href: "/architecture",
+    },
+    {
+        title: "Protocol Core",
+        href: "/protocol",
+        items: [
+            {
+                title: "FHEVM Privacy",
+                href: "/fhevm",
+            },
+        ],
+    },
+    {
+        title: "Polaris Core",
+        href: "/core",
+        items: [
+            {
+                title: "Overview",
+                href: "/overview",
+            },
+        ],
+    },
+    {
+        spacer: true,
+    },
+    {
+        title: "Applications",
+        href: "/apps",
+        items: [
+            {
+                title: "Merchant App",
+                href: "/merchant-app",
+            },
+            {
+                title: "Shopping App",
+                href: "/shopping-app",
+            },
+            {
+                title: "Checkout App",
+                href: "/checkout-app",
+            },
+        ],
+    },
+    {
+        spacer: true,
     },
     {
         title: "Getting Started",
         href: "/getting-started",
-        heading: "Fundamentals",
         items: [
             {
-                title: "Overview",
-                href: "/",
-            },
-            {
-                title: "Installation & Video",
+                title: "Installation",
                 href: "/installation",
             },
         ],
@@ -22,39 +65,7 @@ export const Documents = [
         spacer: true,
     },
     {
-        title: "Agent Skills",
-        href: "/agent-skills",
-        heading: "AI Development",
-        items: [
-            {
-                title: "What are Agent Skills?",
-                href: "/",
-            },
-            {
-                title: "Quick Start Setup",
-                href: "/quick-start",
-            },
-        ],
-    },
-    {
-        spacer: true,
-    },
-    {
-        title: "Starters & Templates",
-        href: "/starters",
-        heading: "Starters",
-    },
-    {
-        spacer: true,
-    },
-    {
-        title: "Community",
-        href: "/community",
-        items: [
-            {
-                title: "Contributing",
-                href: "/contributing",
-            },
-        ],
+        title: "Developer Guide",
+        href: "/developers",
     },
 ];

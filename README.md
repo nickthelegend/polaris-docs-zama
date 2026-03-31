@@ -8,7 +8,7 @@ Official technical documentation for the Polaris Pay ecosystem.
 
 ## 🚀 Overview
 
-Polaris Pay is an institutional-grade fintech layer built on the Initia blockchain, providing yield optimization and decentralized credit infrastructure.
+Polaris Pay is an institutional-grade fintech layer built on the Ethereum blockchain, providing yield optimization and decentralized credit infrastructure.
 
 ### Key Sections:
 - **Protocol Architecture:** In-depth explanation of our three-layer system.

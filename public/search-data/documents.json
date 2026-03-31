@@ -1,157 +1,276 @@
 [
   {
-    "slug": "/agent-skills",
-    "title": "Algorand Agent Skills",
-    "description": "Supercharge your AI assistant with specialized Algorand development knowledge.",
-    "content": "# Algorand Agent Skills\n\n**Algorand Agent Skills** are a \"power pill\" for your development workflow. They are specialized sets of instructions, tool configurations, and reference materials that teach AI assistants (like Claude, Cursor, or Copilot) exactly how to build on Algorand.\n\n## What do they do?\n\nWhen you load Agent Skills into your preferred AI tool, it gains expert knowledge in:\n\n* **AlgoKit Workflows**: Initializing, testing, and deploying projects.\n* **Smart Contract Languages**: Writing clean, efficient Puya TypeScript (PuyaTs) or Python.\n* **Troubleshooting**: Diagnosing and fixing common Algorand errors instantly.\n* **Standards**: Implementing ARC standards (like ARC-4, ARC-32, ARC-56) correctly.\n\n## Why use them?\n\nInstead of spending weeks reading documentation, you can describe your intent to your AI assistant, and it will use the Agent Skills to generate production-grade Algorand code that follows all best practices.\n\nReady to setup? Head over to the **[Quick Start](/docs/agent-skills/quick-start)** guide.\n",
+    "slug": "/apps/checkout-app",
+    "title": "Polaris Checkout App",
+    "description": "A drop-in checkout component for decentralized payments.",
+    "content": "## Overview\n\nThe Polaris Checkout App is a lightweight, embeddable interface for handling specific payment transactions.\n\n### Key Features\n\n* **Embeddable Modal**: Easily add Polaris Pay to any website with just a few lines of code.\n* **Merchant-Aware UI**: Automatically adjusts the interface based on the active merchant.\n* **Transaction Proofs**: Confirms payment with on-chain proofs and off-chain database updates.\n* **Support for FHE Payments**: Encrypted transaction data for confidential payments.\n\n### Technical Details\n\n* **Protocol Integration**: Calls `MerchantRouter.sol` and `PrivateSwapBNB/USDC/USDT/WETH.sol`.\n* **Database Tracking**: Updates the `transactions` collection in MongoDB.\n* **API Support**: Uses `/api/pay` and `/api/proof` for transaction management.\n\n### Example Integration\n\nMerchants can use the checkout app by redirecting users to the checkout URL with the appropriate query parameters:\n`https://checkout.polaris.network?merchantId={ID}&amount={AMOUNT}&currency={CURRENCY}`\n",
     "_searchMeta": {
-      "cleanContent": "algorand agent skills algorand agent skills are a power pill for your development workflow they are specialized sets of instructions tool configurations and reference materials that teach ai assistants like claude cursor or copilot exactly how to build on algorand what do they do when you load agent skills into your preferred ai tool it gains expert knowledge in: algokit workflows: initializing testing and deploying projects smart contract languages: writing clean efficient puya typescript puyats or python troubleshooting: diagnosing and fixing common algorand errors instantly standards: implementing arc standards like arc-4 arc-32 arc-56 correctly why use them instead of spending weeks reading documentation you can describe your intent to your ai assistant and it will use the agent skills to generate production-grade algorand code that follows all best practices ready to setup head over to the quick start guide",
+      "cleanContent": "overview the polaris checkout app is a lightweight embeddable interface for handling specific payment transactions key features embeddable modal: easily add polaris pay to any website with just a few lines of code merchant-aware ui: automatically adjusts the interface based on the active merchant transaction proofs: confirms payment with on-chain proofs and off-chain database updates support for fhe payments: encrypted transaction data for confidential payments technical details protocol integration: calls merchantrouter sol and privateswapbnb usdc usdt weth sol database tracking: updates the transactions collection in mongodb api support: uses api pay and api proof for transaction management example integration merchants can use the checkout app by redirecting users to the checkout url with the appropriate query parameters: https: checkout polaris network merchantid id amount amount currency currency",
       "headings": [
-        "What do they do?",
-        "Why use them?"
+        "Overview"
       ],
       "keywords": [
-        "What do they do?",
-        "Why use them?",
-        "Algorand Agent Skills",
-        "AlgoKit Workflows",
-        "Smart Contract Languages",
-        "Troubleshooting",
-        "Standards",
-        "[Quick Start](/docs/agent-skills/quick-start)"
+        "Overview",
+        "Embeddable Modal",
+        "Merchant-Aware UI",
+        "Transaction Proofs",
+        "Support for FHE Payments",
+        "Protocol Integration",
+        "Database Tracking",
+        "API Support",
+        "MerchantRouter.sol",
+        "PrivateSwapBNB/USDC/USDT/WETH.sol",
+        "transactions",
+        "/api/pay",
+        "/api/proof",
+        "https://checkout.polaris.network?merchantId={ID}&amount={AMOUNT}&currency={CURRENCY}"
       ]
     }
   },
   {
-    "slug": "/agent-skills/quick-start",
-    "title": "Quick Start",
-    "description": "How to setup Algorand Agent Skills in your favorite AI tool.",
-    "content": "# Quick Start: Setting up Agent Skills\n\nFollow these steps to integrate Algorand Agent Skills into your project.\n\n## 1. Prerequisites\n\nYou need the **[algorand-agent-skills](https://github.com/algorand-devrel/algorand-agent-skills)** repository cloned to your machine.\n\n```bash\ngit clone https://github.com/algorand-devrel/algorand-agent-skills.git\n```\n\n## 2. Setup (Per Project)\n\nNavigate to your active project directory and copy the necessary skills and configuration files.\n\n### For Cursor\n\n1. Create a `.cursor/skills` directory in your project root.\n2. Copy the skills:\n   ```bash\n   cp -r ../algorand-agent-skills/skills/* .cursor/skills/\n   ```\n3. Copy the MCP configuration:\n   ```bash\n   cp ../algorand-agent-skills/setups/cursor/mcp.json .cursor/mcp.json\n   ```\n\n### For Claude Code\n\n```bash\n# Copy the skills to your project\ncp -r ../algorand-agent-skills/skills ./\n# Copy the agent configuration\ncp ../algorand-agent-skills/setups/claude-code/.mcp.json ./\ncp ../algorand-agent-skills/setups/claude-code/CLAUDE.md ./\n```\n\n## 3. GitHub PAT Setup\n\nAll skills require access to search code examples via GitHub.\n\n1. Create a [GitHub Personal Access Token](https://github.com/settings/personal-access-tokens).\n2. Set the `GITHUB_TOKEN` environment variable:\n   ```bash\n   export GITHUB_TOKEN=\"your_token_here\"\n   ```\n\nNow, your AI assistant is ready to help you build on Algorand!\n",
+    "slug": "/apps/merchant-app",
+    "title": "Polaris Merchant App",
+    "description": "A dashboard for merchants to accept crypto payments and manage their business.",
+    "content": "## Overview\n\nThe Polaris Merchant App provides an interface for businesses to integrate Polaris Pay and monitor their financial operations.\n\n### Key Features\n\n* **Merchant Dashboard**: Real-time sales data, transaction history, and pending payouts.\n* **Payment Link Generation**: Create shareable payment links for specific products or orders.\n* **Settlement Management**: Automated settlement of crypto payments into preferred stablecoins.\n* **Product Management**: Tools for adding, editing, and categorizing products for the shopper experience.\n\n### Technical Integration\n\n* **Frontend**: Next.js 15 (React 19)\n* **Styling**: Tailwind CSS\n* **Smart Contracts**: `MerchantRouter.sol`\n* **Database**: MongoDB (merchants collection)\n\n### Getting Started as a Merchant\n\n1. **Register**: Create a merchant account via the app.\n2. **API Key**: Generate an API key for protocol integration.\n3. **Integration**: Add the Polaris Pay button or use the redirect URL.\n4. **Accept Payments**: Start receiving crypto directly into your wallet or preferred settlement asset.\n",
     "_searchMeta": {
-      "cleanContent": "quick start: setting up agent skills follow these steps to integrate algorand agent skills into your project prerequisites you need the algorand-agent-skills repository cloned to your machine setup per project navigate to your active project directory and copy the necessary skills and configuration files for cursor create a cursor skills directory in your project root copy the skills: copy the mcp configuration: for claude code github pat setup all skills require access to search code examples via github create a github personal access token set the github_token environment variable: now your ai assistant is ready to help you build on algorand",
+      "cleanContent": "overview the polaris merchant app provides an interface for businesses to integrate polaris pay and monitor their financial operations key features merchant dashboard: real-time sales data transaction history and pending payouts payment link generation: create shareable payment links for specific products or orders settlement management: automated settlement of crypto payments into preferred stablecoins product management: tools for adding editing and categorizing products for the shopper experience technical integration frontend: next js 15 react 19 styling: tailwind css smart contracts: merchantrouter sol database: mongodb merchants collection getting started as a merchant register: create a merchant account via the app api key: generate an api key for protocol integration integration: add the polaris pay button or use the redirect url accept payments: start receiving crypto directly into your wallet or preferred settlement asset",
       "headings": [
-        "1. Prerequisites",
-        "2. Setup (Per Project)",
-        "3. GitHub PAT Setup"
+        "Overview"
       ],
       "keywords": [
-        "1. Prerequisites",
-        "2. Setup (Per Project)",
-        "3. GitHub PAT Setup",
-        "[algorand-agent-skills](https://github.com/algorand-devrel/algorand-agent-skills)",
-        "bash\ngit clone https://github.com/algorand-devrel/algorand-agent-skills.git",
-        "## 2. Setup (Per Project)\n\nNavigate to your active project directory and copy the necessary skills and configuration files.\n\n### For Cursor\n\n1. Create a",
-        "directory in your project root.\n2. Copy the skills:",
-        "bash\n   cp -r ../algorand-agent-skills/skills/* .cursor/skills/",
-        "3. Copy the MCP configuration:",
-        "bash\n   cp ../algorand-agent-skills/setups/cursor/mcp.json .cursor/mcp.json",
-        "### For Claude Code",
-        "bash\n# Copy the skills to your project\ncp -r ../algorand-agent-skills/skills ./\n# Copy the agent configuration\ncp ../algorand-agent-skills/setups/claude-code/.mcp.json ./\ncp ../algorand-agent-skills/setups/claude-code/CLAUDE.md ./",
-        "## 3. GitHub PAT Setup\n\nAll skills require access to search code examples via GitHub.\n\n1. Create a [GitHub Personal Access Token](https://github.com/settings/personal-access-tokens).\n2. Set the",
-        "environment variable:",
-        "bash\n   export GITHUB_TOKEN=\"your_token_here\""
+        "Overview",
+        "Merchant Dashboard",
+        "Payment Link Generation",
+        "Settlement Management",
+        "Product Management",
+        "Frontend",
+        "Styling",
+        "Smart Contracts",
+        "Database",
+        "Register",
+        "API Key",
+        "Integration",
+        "Accept Payments",
+        "MerchantRouter.sol"
+      ]
+    }
+  },
+  {
+    "slug": "/apps/shopping-app",
+    "title": "Polaris Shopping App",
+    "description": "A consumer-facing interface for discovering and buying products with Polaris Pay.",
+    "content": "## Overview\n\nThe Polaris Shopping App provides a seamless e-commerce experience for shoppers using-blockchain technology.\n\n### Key Features\n\n* **Product Discovery**: Browse cross-merchant products and categories.\n* **Unified Checkout**: A single checkout flow for multiple items across the network.\n* **Loyalty & Rewards**: Integrated reward points for active shoppers.\n* **Support for All Polaris Assets**: Pay with stablecoins, WETH, or BNB.\n\n### User Experience\n\n* **Non-Custodial**: Shoppers keep control of their assets throughout the discovery and purchase process.\n* **Efficient**: Sub-second product filtering and fast checkout with minimal blockchain friction.\n* **Multichain**: Support for assets across several networks (where supported).\n\n### Technical Integration\n\n* **Frontend**: Next.js (App Router)\n* **State Management**: React Query\n* **Data Source**: MongoDB (products, categories, transactions)\n",
+    "_searchMeta": {
+      "cleanContent": "overview the polaris shopping app provides a seamless e-commerce experience for shoppers using-blockchain technology key features product discovery: browse cross-merchant products and categories unified checkout: a single checkout flow for multiple items across the network loyalty rewards: integrated reward points for active shoppers support for all polaris assets: pay with stablecoins weth or bnb user experience non-custodial: shoppers keep control of their assets throughout the discovery and purchase process efficient: sub-second product filtering and fast checkout with minimal blockchain friction multichain: support for assets across several networks where supported technical integration frontend: next js app router state management: react query data source: mongodb products categories transactions",
+      "headings": [
+        "Overview"
+      ],
+      "keywords": [
+        "Overview",
+        "Product Discovery",
+        "Unified Checkout",
+        "Loyalty & Rewards",
+        "Support for All Polaris Assets",
+        "Non-Custodial",
+        "Efficient",
+        "Multichain",
+        "Frontend",
+        "State Management",
+        "Data Source"
+      ]
+    }
+  },
+  {
+    "slug": "/architecture",
+    "title": "Protocol Architecture",
+    "description": "Comprehensive overview of the Polaris Pay system.",
+    "content": "## Full Stack Overview\n\nPolaris Pay is built with a modular architecture that integrates blockchain privacy, efficient data management, and user-friendly frontends.\n\n```mermaid\ngraph TD\n    User([User]) <--> Frontend[Next.js 15 Frontend]\n    Frontend <--> APILayer[Next.js API Routes]\n    APILayer <--> MongoDB[(MongoDB Atlas)]\n    APILayer <--> Blockchain[Blockchain Layer]\n    Blockchain <--> FHEVM[FHEVM Privacy Layer]\n    Blockchain <--> SmartContracts[Lending & AMM Contracts]\n```\n\n### Components\n\n1. **Frontend Layer**: Next.js 15 (React 19) applications for shoppers, merchants, and the core protocol.\n2. **API Layer**: Serverless functions handling data orchestration and proof verification.\n3. **Database Layer**: MongoDB Atlas for tracking user positions, protocol stats, and merchant configurations.\n4. **Blockchain Layer**: Ethereum-compatible network (Sepolia/Local) hosting the core protocol.\n5. **Privacy Layer**: Zama's FHEVM for encrypted lending and borrowing operations.\n\n### Data Flow\n\n#### AMM Swap Flow\n\n1. **Frontend**: User enters amount, calls `getAmountOut()`.\n2. **Blockchain**: User approves tokens and executes `swap()`.\n3. **UI**: Updates with new balances after transaction confirmation.\n\n#### Lending Pool Flow\n\n1. **Frontend**: User deposits collateral.\n2. **Smart Contract**: Transfers assets and mints LP tokens.\n3. **API Route**: Updates MongoDB with the new user position.\n",
+    "_searchMeta": {
+      "cleanContent": "full stack overview polaris pay is built with a modular architecture that integrates blockchain privacy efficient data management and user-friendly frontends components frontend layer: next js 15 react 19 applications for shoppers merchants and the core protocol api layer: serverless functions handling data orchestration and proof verification database layer: mongodb atlas for tracking user positions protocol stats and merchant configurations blockchain layer: ethereum-compatible network sepolia local hosting the core protocol privacy layer: zama s fhevm for encrypted lending and borrowing operations data flow amm swap flow frontend: user enters amount calls getamountout blockchain: user approves tokens and executes swap ui: updates with new balances after transaction confirmation lending pool flow frontend: user deposits collateral smart contract: transfers assets and mints lp tokens api route: updates mongodb with the new user position",
+      "headings": [
+        "Full Stack Overview"
+      ],
+      "keywords": [
+        "Full Stack Overview",
+        "Frontend Layer",
+        "API Layer",
+        "Database Layer",
+        "Blockchain Layer",
+        "Privacy Layer",
+        "Frontend",
+        "Blockchain",
+        "UI",
+        "Smart Contract",
+        "API Route",
+        "mermaid\ngraph TD\n    User([User]) <--> Frontend[Next.js 15 Frontend]\n    Frontend <--> APILayer[Next.js API Routes]\n    APILayer <--> MongoDB[(MongoDB Atlas)]\n    APILayer <--> Blockchain[Blockchain Layer]\n    Blockchain <--> FHEVM[FHEVM Privacy Layer]\n    Blockchain <--> SmartContracts[Lending & AMM Contracts]",
+        "### Components\n\n1. **Frontend Layer**: Next.js 15 (React 19) applications for shoppers, merchants, and the core protocol.\n2. **API Layer**: Serverless functions handling data orchestration and proof verification.\n3. **Database Layer**: MongoDB Atlas for tracking user positions, protocol stats, and merchant configurations.\n4. **Blockchain Layer**: Ethereum-compatible network (Sepolia/Local) hosting the core protocol.\n5. **Privacy Layer**: Zama's FHEVM for encrypted lending and borrowing operations.\n\n### Data Flow\n\n#### AMM Swap Flow\n\n1. **Frontend**: User enters amount, calls",
+        ".\n2. **Blockchain**: User approves tokens and executes"
+      ]
+    }
+  },
+  {
+    "slug": "/core/overview",
+    "title": "Polaris Core Overview",
+    "description": "The backend orchestration and data management layer of Polaris Pay.",
+    "content": "## Overview\n\nPolaris Core is the primary Next.js backend for the Obolus Network, renamed Polaris Pay. It handles the core business logic, API orchestration, and database integration.\n\n### Core Features\n\n* **Protocol API**: A robust collection of RESTful APIs for interacting with the protocol and retrieving data.\n* **Convex Integration**: Real-time state synchronization for active lending positions.\n* **Supabase Integration**: Permanent data storage for user accounts, profiles, and historical data.\n* **MongoDB Integration**: Efficient document-based storage for merchants, products, and protocol stats.\n\n### Main API Routes\n\n* `/api/pools`: Retrieve a list of all active lending and AMM pools.\n* `/api/positions`: Get or update user supply and borrow positions.\n* `/api/global-stats`: Retrieve network-wide television, active pools, and average APYs.\n* `/api/limits`: Get user credit limits based on their protocol activity.\n* `/api/pay`: Process and track payments across merchants.\n\n### Database Schema\n\nPolaris Core uses a distributed database architecture:\n\n* **MongoDB**: `pools`, `positions`, `globalStats`, `limits`, `deposits`, `transactions`, `merchants`.\n* **Supabase**: `deposits_v1`, `schema_payease`.\n\n### Key Service Libraries\n\n* `lib/mongodb.ts`: Database connection management and singleton pattern.\n* `lib/fhevm-client.ts`: Routine for FHE encryption and decryption.\n* `hooks/`: A collection of React hooks for seamless protocol interaction (`useAccount`, `useReadContract`, `useFhePrivateLendingReal`).\n",
+    "_searchMeta": {
+      "cleanContent": "overview polaris core is the primary next js backend for the obolus network renamed polaris pay it handles the core business logic api orchestration and database integration core features protocol api: a robust collection of restful apis for interacting with the protocol and retrieving data convex integration: real-time state synchronization for active lending positions supabase integration: permanent data storage for user accounts profiles and historical data mongodb integration: efficient document-based storage for merchants products and protocol stats main api routes api pools: retrieve a list of all active lending and amm pools api positions: get or update user supply and borrow positions api global-stats: retrieve network-wide television active pools and average apys api limits: get user credit limits based on their protocol activity api pay: process and track payments across merchants database schema polaris core uses a distributed database architecture: mongodb: pools positions globalstats limits deposits transactions merchants supabase: depositsv1 schemapayease key service libraries lib mongodb ts: database connection management and singleton pattern lib fhevm-client ts: routine for fhe encryption and decryption hooks : a collection of react hooks for seamless protocol interaction useaccount usereadcontract usefheprivatelendingreal",
+      "headings": [
+        "Overview"
+      ],
+      "keywords": [
+        "Overview",
+        "Protocol API",
+        "Convex Integration",
+        "Supabase Integration",
+        "MongoDB Integration",
+        "MongoDB",
+        "Supabase",
+        "/api/pools",
+        "/api/positions",
+        "/api/global-stats",
+        "/api/limits",
+        "/api/pay",
+        "pools",
+        "positions",
+        "globalStats",
+        "limits",
+        "deposits",
+        "transactions",
+        "merchants",
+        "deposits_v1",
+        "schema_payease",
+        "lib/mongodb.ts",
+        "lib/fhevm-client.ts",
+        "hooks/",
+        "useAccount",
+        "useReadContract",
+        "useFhePrivateLendingReal"
       ]
     }
   },
   {
     "slug": "/getting-started",
     "title": "Getting Started",
-    "description": "How to start and where to begin your Algorand journey.",
-    "content": "# Getting Started with Algorand\n\nNew to Algorand? This page will guide you through the essential resources and point you in the right direction to start building.\n\n## Where to Start?\n\nThe Algorand ecosystem is rich with resources. Here are the most important entry points:\n\n1. **[Algorand Developer Portal](https://developer.algorand.org/)**: The source of truth for all technical documentation, API references, and in-depth tutorials.\n2. **[AlgoKit](https://github.com/algorandfoundation/algokit-cli)**: The official development toolkit. If you're building on Algorand, you'll be using AlgoKit.\n3. **[Discord Community](https://discord.gg/algorand)**: Join thousands of other developers to ask questions and get support.\n\n## Your Path to Development\n\nYour journey typically follows these steps:\n\n1. **Understand the Basics**: Learn about Accounts, Assets (ASAs), and Transactions.\n2. **Install the Tooling**: Set up your development environment.\n3. **Write your First Contract**: Use Python or TypeScript to logic on-chain.\n4. **Connect a Frontend**: Build a user interface that interacts with your contracts.\n\nNext, let's look at what you need to install on your machine to get moving.\n\n**[Setup & Installation](/docs/getting-started/installation)**\n",
+    "description": "How to start using Polaris Pay.",
+    "content": "Welcome to Polaris! This guide will help you get set up with our yield vaults and credit terminal on the Initia ecosystem.\n\n## Prerequisites\n\n* An Initia-compatible wallet.\n* Supported assets (USDC, ETH, etc.) for deposits.\n* Gas for transaction fees on the target chain.\n\n## Quick Start\n\n1. **Connect Wallet:** Navigate to [app.polaris.network](https://app.polaris.network) and connect your wallet.\n2. **Deposit Assets:** Select a vault and deposit your liquidity to start earning yield.\n3. **Unlock Credit:** Use your vTokens as collateral to borrow USDCx instantly via the Credit Terminal.\n\n***\n\nFor technical integration, see our [Developer Guide](/docs/developers).\n",
     "_searchMeta": {
-      "cleanContent": "getting started with algorand new to algorand this page will guide you through the essential resources and point you in the right direction to start building where to start the algorand ecosystem is rich with resources here are the most important entry points: algorand developer portal: the source of truth for all technical documentation api references and in-depth tutorials algokit: the official development toolkit if you re building on algorand you ll be using algokit discord community: join thousands of other developers to ask questions and get support your path to development your journey typically follows these steps: understand the basics: learn about accounts assets asas and transactions install the tooling: set up your development environment write your first contract: use python or typescript to logic on-chain connect a frontend: build a user interface that interacts with your contracts next let s look at what you need to install on your machine to get moving setup installation",
+      "cleanContent": "welcome to polaris this guide will help you get set up with our yield vaults and credit terminal on the initia ecosystem prerequisites an initia-compatible wallet supported assets usdc eth etc for deposits gas for transaction fees on the target chain quick start connect wallet: navigate to app polaris network and connect your wallet deposit assets: select a vault and deposit your liquidity to start earning yield unlock credit: use your vtokens as collateral to borrow usdcx instantly via the credit terminal for technical integration see our developer guide",
       "headings": [
-        "Where to Start?",
-        "Your Path to Development"
+        "Prerequisites",
+        "Quick Start"
       ],
       "keywords": [
-        "Where to Start?",
-        "Your Path to Development",
-        "[Algorand Developer Portal](https://developer.algorand.org/)",
-        "[AlgoKit](https://github.com/algorandfoundation/algokit-cli)",
-        "[Discord Community](https://discord.gg/algorand)",
-        "Understand the Basics",
-        "Install the Tooling",
-        "Write your First Contract",
-        "Connect a Frontend",
-        "[Setup & Installation](/docs/getting-started/installation)"
+        "Prerequisites",
+        "Quick Start",
+        "Connect Wallet:",
+        "Deposit Assets:",
+        "Unlock Credit:"
       ]
     }
   },
   {
     "slug": "/getting-started/installation",
-    "title": "Setup & Installation",
-    "description": "Watch the getting started video and install the necessary development tools.",
-    "content": "# Setup & Installation\n\nFollow this guide to get your machine ready for Algorand development.\n\n## Watch the Getting Started Video\n\nBefore you start installing, watch this overview to understand the workflow:\n\n<iframe width=\"100%\" height=\"450\" src=\"https://www.youtube.com/embed/HrZUe5P4mUY\" title=\"Algorand Getting Started\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen className=\"rounded-xl border shadow-sm\" />\n\n***\n\n## What to Install\n\nTo build on Algorand, you'll need the following core tools:\n\n### 1. Python 3.10+\n\nMost Algorand tooling, including AlgoKit and Puya Py, is built with Python.\n\n* [Download Python](https://www.python.org/downloads/)\n\n### 2. Docker Desktop\n\nRequired for running an Algorand \"LocalNet\" (a private private network on your machine).\n\n* [Install Docker](https://www.docker.com/products/docker-desktop/)\n\n### 3. AlgoKit CLI\n\nAlgoKit is the primary interface for starting projects, running local nodes, and deploying contracts.\n\n```bash\n# Install via pipx (recommended)\npipx install algokit\n\n# Verify installation\nalgokit --version\n```\n\n### 4. Node.js (Optional but Recommended)\n\nRequired if you are building React/Next.js frontends or using the TypeScript SDK.\n\n* [Install Node.js](https://nodejs.org/)\n\n***\n\n## Spin up your First Node\n\nOnce Docker and AlgoKit are installed, you can start a local Algorand node:\n\n```bash\nalgokit localnet start\n```\n\nThis gives you a functional Algorand network with pre-funded accounts to test your applications for free.\n",
+    "title": "Installation",
+    "description": "Setting up the Polaris SDK.",
+    "content": "## SDK Installation\n\nInstall the Polaris Pay SDK via npm:\n\n```bash\nnpm install @polaris-pay/sdk\n```\n\n## Setup\n\n```javascript\nimport { PolarisClient } from \"@polaris-pay/sdk\";\r\n\r\nconst client = new PolarisClient({\r\n  network: \"mainnet\",\r\n  apiKey: \"YOUR_API_KEY\"\r\n});\n```\n",
     "_searchMeta": {
-      "cleanContent": "setup installation follow this guide to get your machine ready for algorand development watch the getting started video before you start installing watch this overview to understand the workflow: iframe width 100 height 450 src https: www youtube com embed hrzue5p4muy title algorand getting started frameborder 0 allow accelerometer autoplay clipboard-write encrypted-media gyroscope picture-in-picture web-share allowfullscreen classname rounded-xl border shadow-sm what to install to build on algorand you ll need the following core tools: python 3 10 most algorand tooling including algokit and puya py is built with python download python docker desktop required for running an algorand localnet a private private network on your machine install docker algokit cli algokit is the primary interface for starting projects running local nodes and deploying contracts node js optional but recommended required if you are building react next js frontends or using the typescript sdk install node js spin up your first node once docker and algokit are installed you can start a local algorand node: this gives you a functional algorand network with pre-funded accounts to test your applications for free",
+      "cleanContent": "sdk installation install the polaris pay sdk via npm: setup",
       "headings": [
-        "Watch the Getting Started Video",
-        "What to Install",
-        "Spin up your First Node"
+        "SDK Installation",
+        "Setup"
       ],
       "keywords": [
-        "Watch the Getting Started Video",
-        "What to Install",
-        "Spin up your First Node",
-        "bash\n# Install via pipx (recommended)\npipx install algokit\n\n# Verify installation\nalgokit --version",
-        "### 4. Node.js (Optional but Recommended)\n\nRequired if you are building React/Next.js frontends or using the TypeScript SDK.\n\n* [Install Node.js](https://nodejs.org/)\n\n***\n\n## Spin up your First Node\n\nOnce Docker and AlgoKit are installed, you can start a local Algorand node:",
-        "bash\nalgokit localnet start"
+        "SDK Installation",
+        "Setup",
+        "bash\nnpm install @polaris-pay/sdk",
+        "## Setup",
+        "javascript\nimport { PolarisClient } from \"@polaris-pay/sdk\";\r\n\r\nconst client = new PolarisClient({\r\n  network: \"mainnet\",\r\n  apiKey: \"YOUR_API_KEY\"\r\n});"
       ]
     }
   },
   {
     "slug": "/",
-    "title": "Welcome to Algorand JNTU",
-    "description": "Technical onboarding documentation for the Algorand JNTU ecosystem.",
-    "content": "# Algorand JNTU Onboarding\n\nWelcome to the official developer onboarding portal for **Algorand JNTU**. This guide is designed to take you from zero to building production-ready decentralized applications on the Algorand blockchain.\n\n## Why Algorand?\n\nAlgorand is a high-performance, carbon-neutral blockchain that solves the \"Blockchain Trilemma\" of security, scalability, and decentralization. With its **Pure Proof of Stake (PPoS)** consensus, it offers:\n\n* **Instant Finality**: Transactions are confirmed in seconds.\n* **Low Fees**: Scalable infrastructure with minimal costs.\n* **Powerful Logic**: Write smart contracts in Python or TypeScript.\n\n## How to navigate these docs\n\nUse the sidebar to explore the following sections:\n\n* **[Getting Started](/docs/getting-started)**: Learn the fundamentals and set up your local development environment.\n* **[Agent Skills](/docs/agent-skills)**: Power up your AI assistant with specialized Algorand development knowledge.\n* **[Starters & Templates](/docs/starters)**: Jumpstart your project with pre-configured frontend and custodian wallet templates.\n\nReady to dive in? Head over to **[How to Start](/docs/getting-started)**.\n",
+    "title": "Welcome to Polaris Pay",
+    "description": "Yield vaults and credit rails on Ethereum.",
+    "content": "## What is Polaris Pay?\n\nPolaris Pay is an institutional-grade fintech layer built on the Ethereum blockchain. We bridge the gap between yield optimization and credit accessibility, providing a seamless, non-custodial experience for multichain asset holders.\n\n### The Three Layers of Polaris\n\n1. **Layer 1: Yield Vaults** - Auto-compounding strategy vaults for stablecoins and blue-chip assets.\n2. **Layer 2: vToken Collateral** - Use your vault receipt tokens (vTokens) as collateral for instant credit lines.\n3. **Layer 3: BNPL Credit Rails** - A unique yield-serviced repayment model where the productivity of your assets pays off your debt automatically.\n\n### Why Polaris?\n\n* **Multichain Native:** Optimized for the Ethereum ecosystem and interoperable across chains.\n* **Yield-Serviced Debt:** Borrow against your assets and let the yield handle the repayments.\n* **Instant Credit:** Unlock up to 60% LTV on your deposited liquidity.\n* **Institutional Grade:** Built with high security standards for parallel execution environments (FHEVM).\n\n***\n\nExplore our documentation to learn more about how Polaris works and how to integrate it into your platform.\n",
     "_searchMeta": {
-      "cleanContent": "algorand jntu onboarding welcome to the official developer onboarding portal for algorand jntu this guide is designed to take you from zero to building production-ready decentralized applications on the algorand blockchain why algorand algorand is a high-performance carbon-neutral blockchain that solves the blockchain trilemma of security scalability and decentralization with its pure proof of stake ppos consensus it offers: instant finality: transactions are confirmed in seconds low fees: scalable infrastructure with minimal costs powerful logic: write smart contracts in python or typescript how to navigate these docs use the sidebar to explore the following sections: getting started: learn the fundamentals and set up your local development environment agent skills: power up your ai assistant with specialized algorand development knowledge starters templates: jumpstart your project with pre-configured frontend and custodian wallet templates ready to dive in head over to how to start",
+      "cleanContent": "what is polaris pay polaris pay is an institutional-grade fintech layer built on the ethereum blockchain we bridge the gap between yield optimization and credit accessibility providing a seamless non-custodial experience for multichain asset holders the three layers of polaris layer 1: yield vaults - auto-compounding strategy vaults for stablecoins and blue-chip assets layer 2: vtoken collateral - use your vault receipt tokens vtokens as collateral for instant credit lines layer 3: bnpl credit rails - a unique yield-serviced repayment model where the productivity of your assets pays off your debt automatically why polaris multichain native: optimized for the ethereum ecosystem and interoperable across chains yield-serviced debt: borrow against your assets and let the yield handle the repayments instant credit: unlock up to 60 ltv on your deposited liquidity institutional grade: built with high security standards for parallel execution environments fhevm explore our documentation to learn more about how polaris works and how to integrate it into your platform",
       "headings": [
-        "Why Algorand?",
-        "How to navigate these docs"
+        "What is Polaris Pay?"
       ],
       "keywords": [
-        "Why Algorand?",
-        "How to navigate these docs",
-        "Algorand JNTU",
-        "Pure Proof of Stake (PPoS)",
-        "Instant Finality",
-        "Low Fees",
-        "Powerful Logic",
-        "[Getting Started](/docs/getting-started)",
-        "[Agent Skills](/docs/agent-skills)",
-        "[Starters & Templates](/docs/starters)",
-        "[How to Start](/docs/getting-started)"
+        "What is Polaris Pay?",
+        "Layer 1: Yield Vaults",
+        "Layer 2: vToken Collateral",
+        "Layer 3: BNPL Credit Rails",
+        "Multichain Native:",
+        "Yield-Serviced Debt:",
+        "Instant Credit:",
+        "Institutional Grade:"
       ]
     }
   },
   {
-    "slug": "/starters",
-    "title": "Starters & Templates",
-    "description": "Pre-configured templates to kickstart your Algorand development.",
-    "content": "# Starters & Templates\n\nJumpstart your development with these high-quality templates for frontend and user onboarding.\n\n## 1. Connect Wallet Starter V2\n\nThe definitive starter for building React/Next.js applications on Algorand. It includes the logic for connecting wallets like Pera, Defly, and Kibisis out of the box.\n\n### [Download on GitHub](https://github.com/nickthelegend/connect-wallet-starter-v2)\n\n**Setup Steps:**\n\n1. Clone: `git clone https://github.com/nickthelegend/connect-wallet-starter-v2.git`\n2. Install: `npm install`\n3. Run: `npm run dev`\n\n***\n\n## 2. Kyra Custodian Wallet (Onboarding)\n\nPerfect for onboarding users who have never touched blockchain. This template allows users to sign in with **Google**—no Pera wallet required to start.\n\n### [Custodian Starter on GitHub](https://github.com/nickthelegend/connect-wallet-starter-v2-custodian)\n\n**Why use Kyra?**\n\n* **Zero Friction**: Users get a functional Algorand wallet just by logging in with their Google account.\n* **KYRA Ecosystem**: The wallet is securely managed at [kyra.algocraft.fun](https://kyra.algocraft.fun).\n* **Mass Adoption**: Ideal for building web3 apps with a traditional web2 user experience.\n\n***\n\n## 3. Algorand Connect UI\n\nA library of beautiful, pre-designed components for Algorand wallet interactions.\n\n* **Live Demo**: [docs.algocraft.fun](https://docs.algocraft.fun)\n",
+    "slug": "/protocol/fhevm",
+    "title": "FHEVM Privacy Integration",
+    "description": "Real Fully Homomorphic Encryption (FHE) for confidential DeFi.",
+    "content": "## What is FHEVM?\n\nPolaris Pay implements a complete, production-ready Zama FHEVM integration. This provides truly confidential lending and borrowing by performing computations on encrypted data.\n\n### Features\n\n* **Actual Encryption**: Amounts and balances are encrypted using FHE (`euint64`).\n* **Privacy Guarantees**: On-chain data is fully confidential; only authorized users (via EIP-712) can decrypt.\n* **Secure Computation**: All operations like addition, subtraction, and comparison happen on encrypted data.\n* **Zama Infrastructure**: Uses real KMS (Key Management System) and Relayer for encryption and decryption.\n\n### Encryption Flow\n\n1. **Frontend**: User creates an encrypted input using the FHEVM SDK.\n2. **ZK-Proof**: A zero-knowledge proof is generated to verify the encryption.\n3. **On-Chain**: The contract receives the encrypted handle and proof.\n4. **Validation**: `FHE.fromExternal()` validates the proof and converts to an encrypted type.\n5. **Computation**: Logic (e.g., balance updates) works on encrypted handles.\n\n### Decryption Flow\n\n#### Private Decryption\n\nA user can view their balance by generating a keypair and an EIP-712 signature in the frontend. The Zama Relayer decrypts the value and returns it securely to the user.\n\n#### Public Decryption\n\nFor operations requiring transparency (e.g., public liquidation), the contract calls `FHE.makePubliclyDecryptable()`. Anyone can then request decryption with proof verification.\n\n## Implementation Details\n\nThe implementation includes hooks and a dedicated FHEVM client library for easy integration:\n\n* `lib/fhevm-client.ts`: Low-level encryption/decryption routines.\n* `hooks/use-fhe-private-lending-real.ts`: High-level React hooks for lending operations.\n",
     "_searchMeta": {
-      "cleanContent": "starters templates jumpstart your development with these high-quality templates for frontend and user onboarding connect wallet starter v2 the definitive starter for building react next js applications on algorand it includes the logic for connecting wallets like pera defly and kibisis out of the box download on github setup steps: clone: git clone https: github com nickthelegend connect-wallet-starter-v2 git install: npm install run: npm run dev kyra custodian wallet onboarding perfect for onboarding users who have never touched blockchain this template allows users to sign in with google no pera wallet required to start custodian starter on github why use kyra zero friction: users get a functional algorand wallet just by logging in with their google account kyra ecosystem: the wallet is securely managed at kyra algocraft fun mass adoption: ideal for building web3 apps with a traditional web2 user experience algorand connect ui a library of beautiful pre-designed components for algorand wallet interactions live demo: docs algocraft fun",
+      "cleanContent": "what is fhevm polaris pay implements a complete production-ready zama fhevm integration this provides truly confidential lending and borrowing by performing computations on encrypted data features actual encryption: amounts and balances are encrypted using fhe euint64 privacy guarantees: on-chain data is fully confidential only authorized users via eip-712 can decrypt secure computation: all operations like addition subtraction and comparison happen on encrypted data zama infrastructure: uses real kms key management system and relayer for encryption and decryption encryption flow frontend: user creates an encrypted input using the fhevm sdk zk-proof: a zero-knowledge proof is generated to verify the encryption on-chain: the contract receives the encrypted handle and proof validation: fhe fromexternal validates the proof and converts to an encrypted type computation: logic e g balance updates works on encrypted handles decryption flow private decryption a user can view their balance by generating a keypair and an eip-712 signature in the frontend the zama relayer decrypts the value and returns it securely to the user public decryption for operations requiring transparency e g public liquidation the contract calls fhe makepubliclydecryptable anyone can then request decryption with proof verification implementation details the implementation includes hooks and a dedicated fhevm client library for easy integration: lib fhevm-client ts: low-level encryption decryption routines hooks use-fhe-private-lending-real ts: high-level react hooks for lending operations",
       "headings": [
-        "1. Connect Wallet Starter V2",
-        "2. Kyra Custodian Wallet (Onboarding)",
-        "3. Algorand Connect UI"
+        "What is FHEVM?",
+        "Implementation Details"
       ],
       "keywords": [
-        "1. Connect Wallet Starter V2",
-        "2. Kyra Custodian Wallet (Onboarding)",
-        "3. Algorand Connect UI",
-        "Setup Steps:",
-        "## 2. Kyra Custodian Wallet (Onboarding)\n\nPerfect for onboarding users who have never touched blockchain. This template allows users to sign in with",
-        "—no Pera wallet required to start.\n\n### [Custodian Starter on GitHub](https://github.com/nickthelegend/connect-wallet-starter-v2-custodian)",
-        "Zero Friction",
-        "KYRA Ecosystem",
-        "Mass Adoption",
-        "Live Demo",
-        "git clone https://github.com/nickthelegend/connect-wallet-starter-v2.git",
-        "npm install",
-        "npm run dev"
+        "What is FHEVM?",
+        "Implementation Details",
+        "Actual Encryption",
+        "Privacy Guarantees",
+        "Secure Computation",
+        "Zama Infrastructure",
+        "Frontend",
+        "ZK-Proof",
+        "On-Chain",
+        "Validation",
+        "Computation",
+        "euint64",
+        "FHE.fromExternal()",
+        "FHE.makePubliclyDecryptable()",
+        "lib/fhevm-client.ts",
+        "hooks/use-fhe-private-lending-real.ts"
+      ]
+    }
+  },
+  {
+    "slug": "/protocol",
+    "title": "Protocol Overview",
+    "description": "The core smart contracts and privacy-preserving primitives of Polaris Pay.",
+    "content": "## Smart Contracts\n\nThe Polaris Pay protocol consists of a set of modular smart contracts for lending, swapping, and privacy.\n\n### Core Contracts\n\n* **PoolManager.sol**: The central entry point for managing all asset pools.\n* **LoanEngine.sol**: Logic for originating and managing debt positions.\n* **ScoreManager.sol**: Calculates and stores user credit scores for lending.\n* **MerchantRouter.sol**: Facilitates payments between shoppers and merchants.\n* **CreditOracle.sol**: Feeds external price data and credit information to the protocol.\n\n### Lending Pools\n\nA set of decentralized lending pools for various assets:\n\n* `LendingPoolUSDC.sol`: Support for stablecoin USDC.\n* `LendingPoolUSDT.sol`: Support for stablecoin USDT.\n* `LendingPoolWETH.sol`: Support for Wrapped Ether.\n* `LendingPoolBNB.sol`: Support for Binance Coin.\n\n### AMM Pools\n\nProvides liquidity for swapping assets:\n\n* `AMMPoolWETH_USDC.sol`\n* `AMMPoolWETH_USDT.sol`\n* `AMMPoolBNB_USDC.sol`\n* `AMMPoolBNB_USDT.sol`\n\n### Privacy Primitives (FHEVM)\n\nEncrypted lending and borrowing based on Zama's Fully Homomorphic Encryption:\n\n* **PrivateCollateralVault.sol**: Encrypted collateral management.\n* **PrivateBorrowManager.sol**: Encrypted debt tracking.\n* **PrivateLendingPool.sol**: Private liquidity supply.\n* **PrivateLiquidationEngine.sol**: Privacy-preserving liquidations.\n",
+    "_searchMeta": {
+      "cleanContent": "smart contracts the polaris pay protocol consists of a set of modular smart contracts for lending swapping and privacy core contracts poolmanager sol: the central entry point for managing all asset pools loanengine sol: logic for originating and managing debt positions scoremanager sol: calculates and stores user credit scores for lending merchantrouter sol: facilitates payments between shoppers and merchants creditoracle sol: feeds external price data and credit information to the protocol lending pools a set of decentralized lending pools for various assets: lendingpoolusdc sol: support for stablecoin usdc lendingpoolusdt sol: support for stablecoin usdt lendingpoolweth sol: support for wrapped ether lendingpoolbnb sol: support for binance coin amm pools provides liquidity for swapping assets: ammpoolweth_usdc sol ammpoolweth_usdt sol ammpoolbnb_usdc sol ammpoolbnb_usdt sol privacy primitives fhevm encrypted lending and borrowing based on zama s fully homomorphic encryption: privatecollateralvault sol: encrypted collateral management privateborrowmanager sol: encrypted debt tracking privatelendingpool sol: private liquidity supply privateliquidationengine sol: privacy-preserving liquidations",
+      "headings": [
+        "Smart Contracts"
+      ],
+      "keywords": [
+        "Smart Contracts",
+        "PoolManager.sol",
+        "LoanEngine.sol",
+        "ScoreManager.sol",
+        "MerchantRouter.sol",
+        "CreditOracle.sol",
+        "PrivateCollateralVault.sol",
+        "PrivateBorrowManager.sol",
+        "PrivateLendingPool.sol",
+        "PrivateLiquidationEngine.sol",
+        "LendingPoolUSDC.sol",
+        "LendingPoolUSDT.sol",
+        "LendingPoolWETH.sol",
+        "LendingPoolBNB.sol",
+        "AMMPoolWETH_USDC.sol",
+        "AMMPoolWETH_USDT.sol",
+        "AMMPoolBNB_USDC.sol",
+        "AMMPoolBNB_USDT.sol"
       ]
     }
   }
