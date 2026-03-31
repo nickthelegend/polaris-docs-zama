@@ -11,8 +11,8 @@ export default function Home() {
           Polaris
         </h1>
         <p className="text-xl text-muted-foreground max-w-[700px] leading-relaxed">
-          The ultimate onboarding suite for Algorand development.
-          Learn, build, and deploy smart contracts and AI agents on the most advanced blockchain.
+          The institutional-grade fintech layer for yield and credit.
+          Bridge the gap between yield optimization and instant credit accessibility.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
@@ -23,7 +23,7 @@ export default function Home() {
             Get Started
           </Link>
           <Link
-            href="https://github.com/algorand-devrel"
+            href="https://github.com/PolarisPay"
             target="_blank"
             rel="noreferrer"
             className={buttonVariants({
@@ -39,9 +39,9 @@ export default function Home() {
 
       <div className="mt-20 grid grid-cols-1 gap-8 sm:grid-cols-3 max-w-6xl mx-auto px-4">
         {[
-          { title: "AlgoKit", description: "Initialize, build, and deploy projects with ease." },
-          { title: "Agent Skills", description: "Power up your AI assistant for Algorand tasks." },
-          { title: "Puya TS", description: "Write smart contracts using standard TypeScript." }
+          { title: "Yield Vaults", description: "Auto-compounding strategy vaults for stablecoins and blue-chips." },
+          { title: "Credit Rails", description: "Instant credit lines backed by your vault productivity." },
+          { title: "FHE Privacy", description: "Secured by Zama FHEVM for confidential protocol interactions." }
         ].map((feature, i) => (
           <div key={i} className="flex flex-col items-center p-6 rounded-2xl border bg-card/50 backdrop-blur-xs hover:border-primary/50 transition-colors">
             <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
