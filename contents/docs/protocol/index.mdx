@@ -1,0 +1,40 @@
+---
+title: Protocol Overview
+description: The core smart contracts and privacy-preserving primitives of Polaris Pay.
+---
+
+## Smart Contracts
+
+The Polaris Pay protocol consists of a set of modular smart contracts for lending, swapping, and privacy.
+
+### Core Contracts
+
+- **PoolManager.sol**: The central entry point for managing all asset pools.
+- **LoanEngine.sol**: Logic for originating and managing debt positions.
+- **ScoreManager.sol**: Calculates and stores user credit scores for lending.
+- **MerchantRouter.sol**: Facilitates payments between shoppers and merchants.
+- **CreditOracle.sol**: Feeds external price data and credit information to the protocol.
+
+### Lending Pools
+
+A set of decentralized lending pools for various assets:
+- `LendingPoolUSDC.sol`: Support for stablecoin USDC.
+- `LendingPoolUSDT.sol`: Support for stablecoin USDT.
+- `LendingPoolWETH.sol`: Support for Wrapped Ether.
+- `LendingPoolBNB.sol`: Support for Binance Coin.
+
+### AMM Pools
+
+Provides liquidity for swapping assets:
+- `AMMPoolWETH_USDC.sol`
+- `AMMPoolWETH_USDT.sol`
+- `AMMPoolBNB_USDC.sol`
+- `AMMPoolBNB_USDT.sol`
+
+### Privacy Primitives (FHEVM)
+
+Encrypted lending and borrowing based on Zama's Fully Homomorphic Encryption:
+- **PrivateCollateralVault.sol**: Encrypted collateral management.
+- **PrivateBorrowManager.sol**: Encrypted debt tracking.
+- **PrivateLendingPool.sol**: Private liquidity supply.
+- **PrivateLiquidationEngine.sol**: Privacy-preserving liquidations.

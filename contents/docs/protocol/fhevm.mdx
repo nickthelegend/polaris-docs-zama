@@ -1,0 +1,37 @@
+---
+title: FHEVM Privacy Integration
+description: Real Fully Homomorphic Encryption (FHE) for confidential DeFi.
+---
+
+## What is FHEVM?
+
+Polaris Pay implements a complete, production-ready Zama FHEVM integration. This provides truly confidential lending and borrowing by performing computations on encrypted data.
+
+### Features
+
+- **Actual Encryption**: Amounts and balances are encrypted using FHE (`euint64`).
+- **Privacy Guarantees**: On-chain data is fully confidential; only authorized users (via EIP-712) can decrypt.
+- **Secure Computation**: All operations like addition, subtraction, and comparison happen on encrypted data.
+- **Zama Infrastructure**: Uses real KMS (Key Management System) and Relayer for encryption and decryption.
+
+### Encryption Flow
+
+1.  **Frontend**: User creates an encrypted input using the FHEVM SDK.
+2.  **ZK-Proof**: A zero-knowledge proof is generated to verify the encryption.
+3.  **On-Chain**: The contract receives the encrypted handle and proof.
+4.  **Validation**: `FHE.fromExternal()` validates the proof and converts to an encrypted type.
+5.  **Computation**: Logic (e.g., balance updates) works on encrypted handles.
+
+### Decryption Flow
+
+#### Private Decryption
+A user can view their balance by generating a keypair and an EIP-712 signature in the frontend. The Zama Relayer decrypts the value and returns it securely to the user.
+
+#### Public Decryption
+For operations requiring transparency (e.g., public liquidation), the contract calls `FHE.makePubliclyDecryptable()`. Anyone can then request decryption with proof verification.
+
+## Implementation Details
+
+The implementation includes hooks and a dedicated FHEVM client library for easy integration:
+- `lib/fhevm-client.ts`: Low-level encryption/decryption routines.
+- `hooks/use-fhe-private-lending-real.ts`: High-level React hooks for lending operations.
